@@ -25,7 +25,7 @@ def sender():
             s.connect(address)
             message = json.dumps({
     "request": "subscribe",
-    "port": 4096,
+    "port": 8888,
     "name": "VENOM",
     "matricules": ["12345", "0000"]
  }
@@ -35,12 +35,12 @@ def sender():
             s.send(message.encode())
             print(s.recv(2048).decode())
 
-# def bestcoup(list_coup):
-#     best_move = random.choice(list_coup)
-#     for elem in list_coup:
-#         if elem == 0 :#or elem == 7 or elem == 56 or elem == 63:
-#             best_move = elem
-#         return best_move
+def bestcoup(list_coup):
+    best_move = random.choice(list_coup)
+    for elem in list_coup:
+        if elem == 0 or elem == 7 or elem == 56 or elem == 63 or elem == 1 or elem == 8 or elem == 6 or elem == 15 or elem == 55 or elem == 62 or elem == 57 or elem == 48:
+            best_move = elem
+        return best_move
 
 
 
@@ -62,7 +62,7 @@ def receiv():
                 if message =={"request": "ping"}: 
                     client.send(message1.encode())
                 elif message['request'] == "play":
-                    the_move_played = random.choice(game.possibleMoves(message["state"]))
+                    the_move_played = bestcoup(game.possibleMoves(message["state"]))
                     client.send(json.dumps({"response": "move","move":the_move_played ,"message": "prouve le "}).encode())
                 elif game.possibleMoves(message["state"])== []:
                     the_move_played = None
