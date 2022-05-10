@@ -17,16 +17,6 @@ address = ('localhost', 3000)
 serveurAddress = ("0.0.0.0" , 8880)
 
 
-directions = [
-    ( 0,  1),
-    ( 0, -1),
-    ( 1,  0),
-    (-1,  0),
-    ( 1,  1),
-    (-1,  1),
-    ( 1, -1),
-    (-1, -1)
-]
 
 def coord(index):
     return index // 8, index % 8
