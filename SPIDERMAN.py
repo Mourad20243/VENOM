@@ -35,7 +35,7 @@ def sender():
             s.connect(address)
             message = json.dumps({
     "request": "subscribe",
-    "port": 7869,
+    "port": 8888,
     "name": "SPIDERMAN",
     "matricules": ["54321", "9999"]
  }
