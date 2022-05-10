@@ -21,8 +21,8 @@ class GameWin(GameEnd):
 	def __str__(self):
 		return super().__str__() + ': {} win the game'.format(self.winner)
 
-# class BadMove(Exception):
-# 	pass
+class BadMove(Exception):
+	pass
 
 class GameDraw(GameEnd):
 	def __init__(self, lastState):
@@ -55,8 +55,8 @@ directions = [
     ( 1, -1),
     (-1, -1)
 ]
-# class BadMove(Exception):
-# 	pass
+class BadMove(Exception):
+	pass
 
 def add(p1, p2):
     l1, c1 = p1
@@ -97,12 +97,11 @@ def willBeTaken(state, move):
     otherIndex = (playerIndex+1)%2
 
     if not (0 <= move < 64):
-        return None
-        # raise BadMove('Your must be between 0 inclusive and 64 exclusive')
+        raise BadMove('Your must be between 0 inclusive and 64 exclusive')
 
     if move in state['board'][0] + state['board'][1]:
-        # raise BadMove('This case is not free')
-        return None
+        raise BadMove('This case is not free')
+
 
     board = []
     for i in range(2):
@@ -123,8 +122,8 @@ def willBeTaken(state, move):
                 break
 
     if len(cases) == 0:
-        # raise BadMove('Your move must take opponent\'s pieces')
-        return None 
+        raise BadMove('Your move must take opponent\'s pieces')
+
     
     return [index(case) for case in cases]
 
@@ -134,8 +133,8 @@ def possibleMoves(state):
         try:
             willBeTaken(state, move)
             res.append(move)
-            print(res)
-        except :#BadMove:
+            #print(res)
+        except BadMove:
             pass
     return res
 
@@ -164,8 +163,8 @@ def Othello(players):
         otherIndex = (playerIndex+1)%2
 
         if len(possibleMoves(state)) > 0 and move is None:
-            # raise BadMove('You cannot pass your turn if there are possible moves')
-            return None 
+            raise BadMove('You cannot pass your turn if there are possible moves')
+
 
         if move is not None:
             cases = willBeTaken(state, move)
