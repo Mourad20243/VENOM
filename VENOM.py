@@ -22,6 +22,10 @@ directions = [
     ( 1, -1),
     (-1, -1)
 ]
+
+
+
+####
 class GameEnd(Exception):
 	def __init__(self, lastState):
 		self.__state = lastState
