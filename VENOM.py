@@ -12,59 +12,6 @@ import game
 
 # moves = possibleMoves(state)
 # move = random.choice(moves)
-directions = [
-    ( 0,  1),
-    ( 0, -1),
-    ( 1,  0),
-    (-1,  0),
-    ( 1,  1),
-    (-1,  1),
-    ( 1, -1),
-    (-1, -1)
-]
-
-
-
-####
-class GameEnd(Exception):
-	def __init__(self, lastState):
-		self.__state = lastState
-
-	@property
-	def state(self):
-		return self.__state
-
-	def __str__(self):
-		return 'Game Over'
-class GameDraw(GameEnd):
-	def __init__(self, lastState):
-		super().__init__(lastState)
-
-	def __str__(self):
-		return super().__str__() + ': Draw'
-
-
-class BadMove(Exception):
-	pass
-def coord(index):
-    return index // 8, index % 8
-
-def index(coord):
-    l, c = coord
-    return l*8+c
-
-def walk(start, direction):
-    current = start
-    while isInside(current):
-        current = add(current, direction)
-        yield current
-def isInside(coord):
-    l, c = coord
-    return 0 <= l < 8 and 0 <= c < 8
-def add(p1, p2):
-    l1, c1 = p1
-    l2, c2 = p2
-    return l1 + l2, c1 + c2
 
 
 
@@ -88,57 +35,15 @@ def sender():
             s.send(message.encode())
             print(s.recv(2048).decode())
 
-def possibleMoves(state):
-    res = []
-    for move in range(64):
-        try:
-            willBeTaken(state, move)
-            res.append(move)
-            print(res)
-        except BadMove:
-            pass
-    return res
-
-def bestcoup(list_coup):
-    best_move = random.choice(list_coup)
-    for elem in list_coup:
-        if elem == 0 or elem == 7 or elem == 56 or elem == 63:
-            best_move = elem
-        return best_move
+# def bestcoup(list_coup):
+#     best_move = random.choice(list_coup)
+#     for elem in list_coup:
+#         if elem == 0 :#or elem == 7 or elem == 56 or elem == 63:
+#             best_move = elem
+#         return best_move
 
 
-def willBeTaken(state, move):
-    playerIndex = state['current']
-    otherIndex = (playerIndex+1)%2
 
-    if not (0 <= move < 64):
-        raise BadMove('Your must be between 0 inclusive and 64 exclusive')
-
-    if move in state['board'][0] + state['board'][1]:
-        raise BadMove('This case is not free')
-
-    board = []
-    for i in range(2):
-        board.append(set((coord(index) for index in state['board'][i])))
-
-    move = coord(move)
-
-    cases = set()
-    for direction in directions:
-        mayBe = set()
-        for case in walk(move, direction):
-            if case in board[otherIndex]:
-                mayBe.add(case)
-            elif case in board[playerIndex]:
-                cases |= mayBe
-                break
-            else:
-                break
-
-    if len(cases) == 0:
-        raise BadMove('Your move must take opponent\'s pieces')
-    
-    return [index(case) for case in cases]
 # def random():
 #     i = game.possibleMoves(a)
 #     a = random.choice(i)
@@ -157,9 +62,9 @@ def receiv():
                 if message =={"request": "ping"}: 
                     client.send(message1.encode())
                 elif message['request'] == "play":
-                    the_move_played = bestcoup(possibleMoves(message["state"]))
+                    the_move_played = random.choice(game.possibleMoves(message["state"]))
                     client.send(json.dumps({"response": "move","move":the_move_played ,"message": "prouve le "}).encode())
-                elif possibleMoves(message["state"])== []:
+                elif game.possibleMoves(message["state"])== []:
                     the_move_played = None
 
                 
