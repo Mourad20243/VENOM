@@ -6,7 +6,7 @@ import sys
 import random
 
 
-from PI2CChampionshipRunner.games.othello import game
+import game
 
 # from PI2CChampionshipRunner.games import othello
 

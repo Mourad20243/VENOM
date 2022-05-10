@@ -4,7 +4,7 @@ import time
 import threading
 import sys
 import random
-
+import game
 
 # from PI2CChampionshipRunner.games.othello import game
 
