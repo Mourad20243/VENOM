@@ -18,16 +18,16 @@ serveurAddress = ("0.0.0.0" , 8880)
 
 
 
-def coord(index):
-    return index // 8, index % 8
+# def coord(index):
+#     return index // 8, index % 8
 
-def index(coord):
-    l, c = coord
-    return l*8+c
+# def index(coord):
+#     l, c = coord
+#     return l*8+c
 
-def isInside(coord):
-    l, c = coord
-    return 0 <= l < 8 and 0 <= c < 8
+# def isInside(coord):
+#     l, c = coord
+#     return 0 <= l < 8 and 0 <= c < 8
 
 def sender():
         
@@ -35,7 +35,7 @@ def sender():
             s.connect(address)
             message = json.dumps({
     "request": "subscribe",
-    "port": 8888,
+    "port": 7869,
     "name": "SPIDERMAN",
     "matricules": ["54321", "9999"]
  }
