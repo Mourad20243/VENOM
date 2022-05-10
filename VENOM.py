@@ -99,6 +99,14 @@ def possibleMoves(state):
             pass
     return res
 
+def bestcoup(list_coup):
+    best_move = random.choice(list_coup)
+    for elem in list_coup:
+        if elem == 0 or elem == 7 or elem == 56 or elem == 63:
+            best_move = elem
+        return best_move
+
+
 def willBeTaken(state, move):
     playerIndex = state['current']
     otherIndex = (playerIndex+1)%2
@@ -149,7 +157,7 @@ def receiv():
                 if message =={"request": "ping"}: 
                     client.send(message1.encode())
                 elif message['request'] == "play":
-                    the_move_played = random.choice(possibleMoves(message["state"]))
+                    the_move_played = bestcoup(possibleMoves(message["state"]))
                     client.send(json.dumps({"response": "move","move":the_move_played ,"message": "prouve le "}).encode())
                 elif possibleMoves(message["state"])== []:
                     the_move_played = None
@@ -180,3 +188,8 @@ receiv()
 
 
 # print(response)
+
+
+# liste_possible= [15, 7, 19 , 44 ]
+
+# print(bestcoup(liste_possible))
