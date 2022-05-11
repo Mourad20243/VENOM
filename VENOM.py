@@ -38,11 +38,15 @@ def sender():
 def bestcoup(list_coup):
     best_move = None#random.choice(list_coup)
     for elem in list_coup:
-        if elem == 0 or elem == 7 or elem == 56 or elem == 63 or elem == 1 or elem == 8 or elem == 6 or elem == 15 or elem == 55 or elem == 62 or elem == 57 or elem == 48:
+        if elem == 0 or elem == 7 or elem == 56 or elem == 63 :
             best_move = elem
             return best_move
-        elif elem == 16 or elem == 24 or elem == 32 or elem == 40 or elem == 2 or elem == 3 or elem == 4 or elem == 5 or elem == 23 or elem == 31 or elem == 39 or elem == 47 or elem == 58 or elem == 59 or elem == 60 or elem == 61:
+        elif elem == 1 or elem == 2 or elem == 3 or elem == 4 or elem == 5 or elem == 6 or elem == 8 or elem == 16 or elem == 24 or elem == 32 or elem == 40 or elem == 48 or elem == 57 or elem == 58 or elem == 59 or elem == 60 or elem == 61 or elem == 62 or elem == 15 or elem == 23 or elem == 31 or elem == 39 or elem == 47 or elem == 55:
+
             best_move = elem
+            return best_move
+        elif elem == 9 or elem == 14 or elem == 49 or elem == 54:
+            best_move = None
             return best_move
 
         else :
