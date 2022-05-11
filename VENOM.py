@@ -56,9 +56,13 @@ def bestcoup(list_coup):
         elif elem == 1 or elem == 8 or elem == 6 or elem == 15 or elem == 55 or elem == 62 or elem == 48 or elem == 57:
             best_move = elem 
             return best_move 
-        else :
-            best_move = random.choice(list_coup)
+        else: #elem == 9 or elem == 14 or elem == 49 or elem == 54 :
+            best_move = elem
             return best_move
+        # else : 
+        #     best_move = elem 
+        #     return random.choice(list_coup)
+
 
 
 
