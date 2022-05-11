@@ -8,26 +8,11 @@ import random
 
 import game
 
-# from PI2CChampionshipRunner.games import othello
-
-# moves = possibleMoves(state)
-# move = random.choice(moves)
 
 address = ('localhost', 3000)
 serveurAddress = ("0.0.0.0" , 8880)
 
 
-
-# def coord(index):
-#     return index // 8, index % 8
-
-# def index(coord):
-#     l, c = coord
-#     return l*8+c
-
-# def isInside(coord):
-#     l, c = coord
-#     return 0 <= l < 8 and 0 <= c < 8
 
 def sender():
         
@@ -44,10 +29,6 @@ def sender():
 
             s.send(message.encode())
             print(s.recv(2048).decode())
-# def random():
-#     i = game.possibleMoves(a)
-#     a = random.choice(i)
-#     return 
 
 def receiv():
     with socket.socket() as s : 
@@ -68,16 +49,7 @@ def receiv():
                     except : 
                         the_move_played = None
                         client.send(json.dumps({"response": "move","move":the_move_played }).encode())
-                # elif game.possibleMoves(message["state"])== []:
-                #     the_move_played = None
 
-
-                
-                        
-
-
-#thread = threading.Thread(target=sender, daemon=True)
-#thread.start()
 
 sender()
 receiv()

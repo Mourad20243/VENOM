@@ -6,19 +6,15 @@ import sys
 import random
 import game
 
-# from PI2CChampionshipRunner.games.othello import game
-
-# from PI2CChampionshipRunner.games import othello
-
-# moves = possibleMoves(state)
-# move = random.choice(moves)
 
 
 
 
 
-address = ('localhost', 3000)
-serveurAddress = ("0.0.0.0" , 8888)
+
+address = ('localhost', 3000) #adresse du serveur 
+serveurAddress = ("0.0.0.0" , 8888) #adresse du client 
+#####fonction qui permet de se connecter au serveur et d'envoye un message json 
 def sender():
         
         with socket.socket() as s:
@@ -34,16 +30,12 @@ def sender():
 
             s.send(message.encode())
             print(s.recv(2048).decode())
-
+####### fonction qui renvoie du meilleurs au pire coup possible a jouer 
 def bestcoup(list_coup):
-    best_move = None#random.choice(list_coup)
+    best_move = None
     for elem in list_coup:
         print(elem)
-        # if elem == 44 :
-        #     best_move = elem 
-        #     return best_move
-        # else :
-        #     return None
+
         if elem == 0 or elem == 7 or elem == 56 or elem == 63 :
             best_move = elem
             return best_move
@@ -65,19 +57,15 @@ def bestcoup(list_coup):
         elif elem == 9 or elem == 14 or elem == 49 or elem == 54 :
             best_move = elem
             return best_move
-        # else : 
-        #     best_move = elem 
-        #     return random.choice(list_coup)
 
 
 
 
 
-# def random():
-#     i = game.possibleMoves(a)
-#     a = random.choice(i)
-#     return 
 
+
+
+####### fonction qui permet de recevoir les informations du serveur pour pouvoir y repondre et jouer 
 def receiv():
     with socket.socket() as s : 
         s.bind(serveurAddress)
@@ -86,13 +74,12 @@ def receiv():
             client , address = s.accept()
             with client :
                 message = json.loads(client.recv(2048).decode())
-                #print(message) 
                 message1=str('{"response": "pong"}')
                 if message =={"request": "ping"}: 
                     client.send(message1.encode())
-                elif message['request'] == "play":
-                    the_move_played = bestcoup(game.possibleMoves(message["state"]))
-                    client.send(json.dumps({"response": "move","move":the_move_played ,"message": "siuuuuuu "}).encode())
+                elif message['request'] == "play": #lorsque je recois play comme requette je dois jouer un coup
+                    the_move_played = bestcoup(game.possibleMoves(message["state"])) # variable qui permet de jouer un coup 
+                    client.send(json.dumps({"response": "move","move":the_move_played ,"message": "siuuuuuu "}).encode())#envoie l'information 
                 elif game.possibleMoves(message["state"])== []:
                     the_move_played = None
 
@@ -100,30 +87,9 @@ def receiv():
                         
 
 
-#thread = threading.Thread(target=sender, daemon=True)
-#thread.start()
-
 sender()
 receiv()
 
-    # response = s.recv(2048).decode()
-
-
-# def hello():
-#     while True:
-#         time.sleep(1)
-#         print('hello')
-# thread = threading.Thread(target=hello, daemon=True)
-# thread.start()
-# while True:
-#     time.sleep(1)
-#     print('bye')
 
 
 
-# print(response)
-
-
-# liste_possible= [15, 7, 19 , 44 ]
-
-# print(bestcoup(liste_possible))
