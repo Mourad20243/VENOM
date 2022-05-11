@@ -2,20 +2,21 @@
 
 # projet d'informatique Othello chafik adel , Mourad Aarab 
 
-ce projet consiste en la realisation d'une intelligence artificielle(IA) pour le jeu Othello.
+Ce projet consiste en la réalisation d'une intelligence artificielle (IA) pour le jeu Othello.
 Notre IA qui sera le client devra interagir avec le serveur pour pouvoir se connecter.
-Cela nous permettra d'échanger des informations avec le serveur afin de respecter certaine condition pour demarrer le championnat . 
+Cela nous permettra d'échanger des informations avec le serveur afin de respecter certaines conditions pour pouvoir participer au championnat . 
+
 ## Stratégie utilisée
-notre projet se base sur une fonction :  
+Notre projet se base sur une fonction :  
     -bestcoup()
 cette fonction permet de jouer les meilleurs coups possibles face a une IA random. 
-le principe est simple lorsque le serveur nous envoie une requette de certaines cases de possibilité a jouer , la fonction selectionnera les cases censé etre les mieux joues (via la fonction possibleMove). 
+Le principe est simple, lorsque le serveur nous envoie une requette de certaines cases de possibilité à jouer , la fonction sélectionnera les cases censées être les mieux jouées (via la fonction possibleMove). 
 
-les meilleures cases sont principalement les coins(bestcoup). 
-la fonction bestcoup renvoie du meilleur coup possible a jouer au pire coup cad que si aucun meilleur coup est a jouer il devra etre obliger de joue un coup pas tres utile . 
+Les meilleures cases sont principalement les coins (bestcoup). 
+La fonction bestcoup renvoie du meilleur coup possible à jouer au pire coup c-à-d que si aucun meilleur coup est possiblement jouable , il devra être obliger de jouer un coup pas très utile . 
 
 
-## Listes des requêtes / réponse : 
+## Listes des requêtes / réponses : 
 
 ### Inscription : 
 
@@ -46,7 +47,7 @@ Si tout se passe correctement, le serveur répond :
 ### Vérification de la présence : 
 
 
- Afin de vérifier si le client est toujours connecté, le serveur envoit régulièrement des requète "ping" sur le port mentionné lors de l'inscription, auquelle nous devons répondre "pong"
+ Afin de vérifier si le client est toujours connecté, le serveur envoit régulièrement des requêtes "ping" sur le port mentionné lors de l'inscription, auxquelle nous devons répondre "pong"
 
 Requète ping : 
 
@@ -91,7 +92,7 @@ La variable lives donne le nombre de vies restantes du joueur, chaque joueur a 3
 
 La variable errors liste les raisons pour lesquelles les coups joués étaient mauvais.
 
-La variable state donne l'état du jeu, elle contient différentes infos nécéssaire au client afin qu'il puisse décider comment jouer. 
+La variable state donne l'état du jeu, elle contient différentes infos nécéssaires au client afin qu'il puisse décider comment jouer. 
 
 La réponse du client est: 
 
