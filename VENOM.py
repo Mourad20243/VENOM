@@ -38,6 +38,12 @@ def sender():
 def bestcoup(list_coup):
     best_move = None#random.choice(list_coup)
     for elem in list_coup:
+        print(elem)
+        # if elem == 44 :
+        #     best_move = elem 
+        #     return best_move
+        # else :
+        #     return None
         if elem == 0 or elem == 7 or elem == 56 or elem == 63 :
             best_move = elem
             return best_move
@@ -56,7 +62,7 @@ def bestcoup(list_coup):
         elif elem == 1 or elem == 8 or elem == 6 or elem == 15 or elem == 55 or elem == 62 or elem == 48 or elem == 57:
             best_move = elem 
             return best_move 
-        else: #elem == 9 or elem == 14 or elem == 49 or elem == 54 :
+        elif elem == 9 or elem == 14 or elem == 49 or elem == 54 :
             best_move = elem
             return best_move
         # else : 
@@ -80,7 +86,7 @@ def receiv():
             client , address = s.accept()
             with client :
                 message = json.loads(client.recv(2048).decode())
-                print(message) 
+                #print(message) 
                 message1=str('{"response": "pong"}')
                 if message =={"request": "ping"}: 
                     client.send(message1.encode())
