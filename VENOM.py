@@ -92,7 +92,7 @@ def receiv():
                     client.send(message1.encode())
                 elif message['request'] == "play":
                     the_move_played = bestcoup(game.possibleMoves(message["state"]))
-                    client.send(json.dumps({"response": "move","move":the_move_played ,"message": "prouve le "}).encode())
+                    client.send(json.dumps({"response": "move","move":the_move_played ,"message": "siuuuuuu "}).encode())
                 elif game.possibleMoves(message["state"])== []:
                     the_move_played = None
 

@@ -61,13 +61,13 @@ def receiv():
                 if message =={"request": "ping"}: 
                     client.send(message1.encode())
                 elif message['request'] == "play":
-                    # try : 
+                    try : 
 
                         the_move_played = random.choice(game.possibleMoves(message["state"]))
-                        client.send(json.dumps({"response": "move","move":the_move_played ,"message": "Je suis le plus fort"}).encode())
-                    # except : 
-                    #     the_move_played = None
-                    #     client.send(json.dumps({"response": "move","move":the_move_played ,"message": "Je suis le plus fort"}).encode())
+                        client.send(json.dumps({"response": "move","move":the_move_played }).encode())
+                    except : 
+                        the_move_played = None
+                        client.send(json.dumps({"response": "move","move":the_move_played }).encode())
                 # elif game.possibleMoves(message["state"])== []:
                 #     the_move_played = None
 
