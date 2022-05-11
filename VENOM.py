@@ -41,13 +41,21 @@ def bestcoup(list_coup):
         if elem == 0 or elem == 7 or elem == 56 or elem == 63 :
             best_move = elem
             return best_move
-        elif  elem == 2 or elem == 3 or elem == 4 or elem == 5  or elem == 16 or elem == 24 or elem == 32 or elem == 40  or elem == 58 or elem == 59 or elem == 60 or elem == 61   or elem == 23 or elem == 31 or elem == 39 or elem == 47 :
+        elif  elem == 2 or elem == 3 or elem == 4 or elem == 5 or elem == 23 or elem == 31 or elem == 39 or elem == 47 or elem == 61 or elem == 60 or elem == 59 or elem == 58 or elem == 40 or elem == 32 or elem == 24 or elem == 16:
             best_move = elem
             return best_move
-        elif elem == 9 or elem == 14 or elem == 49 or elem == 54:
+        elif elem == 18 or elem == 21 or elem == 42 or elem == 45 or elem == 27 or elem == 28 or elem == 35 or elem == 36:
             best_move = elem
+            return best_move   
+        elif elem == 19 or elem == 20 or elem == 29 or elem == 37 or elem == 44 or elem == 43 or elem == 34 or elem == 26 :
+            best_move = elem 
             return best_move
-
+        elif elem == 10 or elem == 11 or elem == 12 or elem == 13 or elem == 22 or elem == 30 or elem == 38 or elem == 46 or elem == 53 or elem == 52 or elem == 51 or elem == 50 or elem == 41 or elem == 33 or elem == 25 or elem == 17 :
+            best_move = elem 
+            return best_move 
+        elif elem == 1 or elem == 8 or elem == 6 or elem == 15 or elem == 55 or elem == 62 or elem == 48 or elem == 57:
+            best_move = elem 
+            return best_move 
         else :
             best_move = random.choice(list_coup)
             return best_move
