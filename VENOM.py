@@ -12,7 +12,7 @@ import game
 
 
 
-address = ('localhost', 3000) #adresse du serveur 
+address = ('172.17.33.221', 3000) #adresse du serveur 
 serveurAddress = ("0.0.0.0" , 8888) #adresse du client 
 #####fonction qui permet de se connecter au serveur et d'envoye un message json 
 def sender():
@@ -79,6 +79,7 @@ def receiv():
                     client.send(message1.encode())
                 elif message['request'] == "play": #lorsque je recois play comme requette je dois jouer un coup
                     the_move_played = bestcoup(game.possibleMoves(message["state"])) # variable qui permet de jouer un coup 
+                    print(message['state'])
                     client.send(json.dumps({"response": "move","move":the_move_played ,"message": "siuuuuuu "}).encode())#envoie l'information 
                 elif game.possibleMoves(message["state"])== []:
                     the_move_played = None

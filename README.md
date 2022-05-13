@@ -101,9 +101,11 @@ La réponse du client est:
    "move": the_move_played,
    "message": "Fun message"
 }
-
+```
 La variable Players donne les noms des joueurs inscris au match, le premier joueur représente celui qui joueura en premier avec les pions noirs. 
 
 La variable current donne l'indice dans la liste Players du joueur devant donner son coup.
 
 La variable board donne le plateau de jeu. 
+
+
