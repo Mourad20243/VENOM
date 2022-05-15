@@ -1,6 +1,6 @@
 # VENOM
 
-# projet d'informatique Othello chafik adel , Mourad Aarab 
+# Projet d'informatique Othello chafik adel , Mourad Aarab 
 
 ce projet consiste en la realisation d'une intelligence artificielle(IA) pour le jeu Othello.
 Notre IA qui sera le client devra interagir avec le serveur pour pouvoir se connecter.
